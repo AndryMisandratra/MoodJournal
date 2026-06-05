@@ -40,11 +40,12 @@ public class JournalController {
     }
 
     // Dans JournalController.java
-
     @GetMapping("/entries")
-    public ResponseEntity<List<EntryResponse>> getUserEntries(HttpServletRequest request) {
-        Long userId = getUserIdFromRequest(request);
-        return ResponseEntity.ok(journalService.getUserEntries(userId));
+    public ResponseEntity<List<EntryResponse>> getUserEntries(HttpServletRequest httpRequest) {
+        String token = extractToken(httpRequest);
+        Long userId = tokenProvider.getUserIdFromToken(token);
+        List<EntryResponse> entries = journalService.getUserEntries(userId);
+        return ResponseEntity.ok(entries);
     }
 
     @PutMapping("/entries/{entryId}")

@@ -86,6 +86,4 @@ public class JournalService {
         }
         entryRepository.delete(entry);
     }
-
-
 }
