@@ -15,13 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class JournalService {
 
     private final JournalEntryRepository entryRepository;
     private final ActivityRepository activityRepository;
-    private final UserService userService; // réutiliser votre service existant
+    private final UserService userService;
+    private GoalService goalService;// réutiliser votre service existant
 
     @Transactional
     public EntryResponse createEntry(Long userId, CreateEntryRequest request) {
@@ -39,6 +41,12 @@ public class JournalService {
         }
 
         entry = entryRepository.save(entry);
+
+        if (request.getActivityIds() != null) {
+            for (Long activityId : request.getActivityIds()) {
+                goalService.updateStreakForActivity(userId, activityId, entry.getRecordedAt());
+            }
+        }
 
         return mapToResponse(entry);
     }
