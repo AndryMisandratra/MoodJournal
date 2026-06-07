@@ -26,4 +26,7 @@ public class Activity {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(nullable = false)
+    private Boolean global = false;   // false = activité personnelle
 }
