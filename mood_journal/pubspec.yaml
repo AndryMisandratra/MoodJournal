@@ -1,0 +1,55 @@
+name: mood_journal
+description: Mood Journal - Suivi d'humeur quotidien
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.8
+  
+  # State management
+  riverpod: ^2.6.1
+  flutter_riverpod: ^2.6.1
+  
+  # Networking
+  dio: ^5.7.0
+  retrofit: ^4.4.1
+  logger: ^2.5.0
+  
+  # Secure storage
+  flutter_secure_storage: ^9.2.2
+  
+  # Date formatting
+  intl: ^0.20.0
+  
+  # Image picker & audio recorder
+  image_picker: ^1.1.2
+  record: ^5.2.0
+  path_provider: ^2.1.5
+  
+  # Local database (offline mode)
+  sqflite: ^2.4.1
+  
+  # Charts & graphs
+  fl_chart: ^0.70.2
+  
+  # Calendar
+  table_calendar: ^3.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.13
+  retrofit_generator: ^9.1.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo.png
